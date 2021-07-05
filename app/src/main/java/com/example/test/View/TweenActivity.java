@@ -1,4 +1,4 @@
-package com.example.tween;
+package com.example.test.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
