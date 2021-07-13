@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "MainActivity";
     private TextView btn1;
     private TextView btn2;
+    private TextView btn3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +21,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         btn1 = findViewById(R.id.btn_1);
         btn2 = findViewById(R.id.btn_2);
+        btn3 = findViewById(R.id.btn_3);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_2:
                 startActivity(InnerFilestorageActivity.class);
+                break;
+            case R.id.btn_3:
+                startActivity(ExteralStorageActivity.class);
                 break;
             default:
                 break;
