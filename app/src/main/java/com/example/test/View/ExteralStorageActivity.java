@@ -19,6 +19,8 @@ import androidx.core.content.ContextCompat;
 import com.example.test.R;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.charset.StandardCharsets;
@@ -50,12 +52,14 @@ public class ExteralStorageActivity extends AppCompatActivity implements View.On
 
     /**
      * 保存文件
-     * @param isInPackageName   是否是保存在应用目录下
+     *
+     * @param isInPackageName 是否是保存在应用目录下
      * @throws Exception
      */
     private void save(boolean isInPackageName) throws Exception {
         //判断SD卡是否装载
         if (!TextUtils.equals(Environment.getExternalStorageState(), Environment.MEDIA_MOUNTED)) {
+            Toast.makeText(this, "SD卡没有挂载", Toast.LENGTH_SHORT).show();
             return;
         }
         String fileName_string = fileName.getText().toString();
@@ -65,6 +69,13 @@ public class ExteralStorageActivity extends AppCompatActivity implements View.On
             fileDir = this.getExternalFilesDir(null).getAbsoluteFile() + "/" + fileName_string;
             Log.w(TAG, "save: fileDir:　" + fileDir);
         } else {
+            //自己建文件件
+//            fileDir = Environment.getExternalStorageDirectory().getAbsoluteFile() + "/xxx/";
+//             File file = new File(fileDir);
+//            if (!file.exists()) {
+//                file.mkdirs();
+//            }
+//            fileDir = file.getAbsolutePath() + fileName_string;
             fileDir = Environment.getExternalStorageDirectory().getAbsoluteFile() + "/" + fileName_string;
             Log.w(TAG, "save: fileDir:　" + fileDir);
         }
@@ -83,13 +94,31 @@ public class ExteralStorageActivity extends AppCompatActivity implements View.On
         }
     }
 
-    private void read(boolean isInPackageName) {
+    private void read(boolean isInPackageName) throws Exception {
         //SD卡是否装载
         if (!TextUtils.equals(Environment.getExternalStorageState(), Environment.MEDIA_MOUNTED)) {
             return;
         }
         String fileName_string = fileName.getText().toString();
+        String fileContent_string;
+        String fileDir;
+        //拿到文件路径
+        if (isInPackageName) {
+            fileDir = this.getExternalFilesDir(null).getAbsolutePath() + "/" + fileName_string;
+        } else {
+            fileDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + fileName_string;
+        }
+        FileInputStream fileInputStream = new FileInputStream(fileDir);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        byte[] bytes = new byte[1024];
+        int len;
+        if ((len = fileInputStream.read(bytes)) != -1) {
+            byteArrayOutputStream.write(bytes, 0, len);
+        }
+        fileContent_string = byteArrayOutputStream.toString();
 
+        this.fileContent.setText(fileContent_string);
+        Toast.makeText(this, "读取成功", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -100,13 +129,13 @@ public class ExteralStorageActivity extends AppCompatActivity implements View.On
                     save(true);
                     break;
                 case R.id.save_2:
-
+                    read(true);
                     break;
                 case R.id.save_3:
                     save(false);
                     break;
                 case R.id.save_4:
-
+                    read(false);
                     break;
                 default:
                     break;
