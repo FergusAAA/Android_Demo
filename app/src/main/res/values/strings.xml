@@ -3,4 +3,12 @@
     <string name="Tween">补间动画</string>
     <string name="Inner_file_storage">内部文件存储</string>
     <string name="Exteral_file_storage">外部文件存储</string>
+    <string name="Database_storage">数据库存储</string>
+    <string name="Create_db">Create DB</string>
+    <string name="Update_db">Update DB</string>
+    <string name="Insert">Insert</string>
+    <string name="Update">Update</string>
+    <string name="Delete">Delete</string>
+    <string name="Query">Query</string>
+    <string name="Test_transaction">Test Transaction</string>
 </resources>
