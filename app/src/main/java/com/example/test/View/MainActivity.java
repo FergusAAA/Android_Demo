@@ -13,7 +13,7 @@ import com.example.test.R;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
     private TextView btn1;
-    private FrameLayout btn2;
+    private TextView btn2;
     private TextView btn3;
     private TextView btn4;
 
