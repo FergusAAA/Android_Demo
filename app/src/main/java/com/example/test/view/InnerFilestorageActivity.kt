@@ -1,4 +1,4 @@
-package com.example.test.View
+package com.example.test.view
 
 import android.content.res.AssetManager
 import android.graphics.BitmapFactory

@@ -1,4 +1,4 @@
-package com.example.test.View
+package com.example.test.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (v.id) {
             R.id.btn_1 -> startActivity(TweenActivity::class.java)
             R.id.btn_2 -> startActivity(InnerFilestorageActivity::class.java)
-            R.id.btn_3 -> startActivity(ExteralStorageActivity::class.java)
+            R.id.btn_3 -> startActivity(ExternalStorageActivity::class.java)
             R.id.btn_4 -> startActivity(DatabaseStorageActivity::class.java)
         }
     }
