@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btn_1 -> startActivity(TweenActivity::class.java)
-            R.id.btn_2 -> startActivity(InnerFilestorageActivity::class.java)
+            R.id.btn_2 -> startActivity(InnerFirestoneActivity::class.java)
             R.id.btn_3 -> startActivity(ExternalStorageActivity::class.java)
             R.id.btn_4 -> startActivity(DatabaseStorageActivity::class.java)
         }

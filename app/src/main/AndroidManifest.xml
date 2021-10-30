@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.ExternalStorageActivity" />
-        <activity android:name=".view.InnerFilestorageActivity" />
+        <activity android:name=".view.InnerFirestoneActivity" />
         <activity android:name=".view.TweenActivity" />
         <activity android:name=".view.MainActivity">
             <intent-filter>

@@ -8,11 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.test.R
-import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 
-class InnerFilestorageActivity : AppCompatActivity(), View.OnClickListener {
+class InnerFirestoneActivity : AppCompatActivity(), View.OnClickListener {
     private var save: TextView? = null
     private var read: TextView? = null
     private var img: ImageView? = null
@@ -40,37 +39,37 @@ class InnerFilestorageActivity : AppCompatActivity(), View.OnClickListener {
      */
     private fun save(){
         //得到 assetManager
-        val assetManager: AssetManager = getAssets();
+        val assetManager: AssetManager = assets
         //得到输入流
-        val inputStream: InputStream = assetManager.open("batman.jpg");
+        val inputStream: InputStream = assetManager.open("batman.jpg")
         //得到输出流
-        val fileOutputStream: FileOutputStream = openFileOutput("batman.jpg", MODE_PRIVATE);
+        val fileOutputStream: FileOutputStream = openFileOutput("batman.jpg", MODE_PRIVATE)
         //读取文件
         val bytes = byteArrayOf(1024.toByte())
-        var len: Int = inputStream.read(bytes);
+        var len: Int = inputStream.read(bytes)
         while (len != -1) {
-            fileOutputStream.write(bytes, 0, len);
-            len = inputStream.read(bytes);
+            fileOutputStream.write(bytes, 0, len)
+            len = inputStream.read(bytes)
         }
         //关闭流
-        inputStream.close();
-        fileOutputStream.close();
+        inputStream.close()
+        fileOutputStream.close()
     }
 
     /**
      * 从文件中找到图片，并加载
      */
     private fun read() {
-        //得到 Fils 文件夹的绝对路径
-        val absoluteFile: File = getFilesDir().getAbsoluteFile();
+        //得到 Files 文件夹的绝对路径
+        val absoluteFile: String = filesDir.absolutePath
         //图片的绝对路径
-        val bitmapDir = absoluteFile.toString() + "/batman.jpg";
+        val bitmapDir = "$absoluteFile/batman.jpg"
         //得到bitmap
-        val bitmap = BitmapFactory.decodeFile(bitmapDir);
+        val bitmap = BitmapFactory.decodeFile(bitmapDir)
         //设置资源
         if (bitmap != null) {
-            img?.setImageBitmap(bitmap);
-            img?.visibility = View.VISIBLE;
+            img?.setImageBitmap(bitmap)
+            img?.visibility = View.VISIBLE
         }
     }
 }
