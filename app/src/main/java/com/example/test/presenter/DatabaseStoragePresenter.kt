@@ -3,6 +3,7 @@ package com.example.test.presenter
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
 import android.widget.Toast
 import com.example.test.presenter.imp.DatabaseStoragePresenterImp
 import com.example.test.utils.DBHelper
@@ -36,15 +37,27 @@ class DatabaseStoragePresenter(private val mView: DatabaseStorageImp) : Database
 
     override fun insert(context: Context, values: ContentValues) {
         val runnable = Runnable {
-            val dbHelper = DBHelper(context, 3)
-            val database = dbHelper.readableDatabase
-            val id = database.insert("person", null, values)
-            if (id == -1L) {
-                mView.insertDbFailure()
-            } else {
-                mView.insertDbSuccess()
+            var database: SQLiteDatabase? = null
+            try {
+                val dbHelper = DBHelper(context, 3)
+                database = dbHelper.readableDatabase
+                //设置sql事务，开启事务
+                database?.beginTransaction()
+                val id = database?.insert("person", null, values)
+                if (id == -1L) {
+                    mView.insertDbFailure()
+                } else {
+                    mView.insertDbSuccess()
+                    //设置事务成功
+                    database?.setTransactionSuccessful()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            } finally {
+                //关闭事务
+                database?.endTransaction()
+                database?.close()
             }
-            database.close()
         }
         var subscribe = Observable
                 .just(runnable)
@@ -54,10 +67,22 @@ class DatabaseStoragePresenter(private val mView: DatabaseStorageImp) : Database
     }
 
     override fun updata(context: Context, values: ContentValues, ids: Array<String>) {
-        val dbHelper = DBHelper(context, 3)
-        val readableDatabase = dbHelper.readableDatabase
-        val id = readableDatabase.update("person", values, "_id=?", ids)
-        readableDatabase.close()
+        var readableDatabase: SQLiteDatabase? = null
+        try {
+            val dbHelper = DBHelper(context, 3)
+            readableDatabase = dbHelper.readableDatabase
+            //设置sql事务，开启事务
+            readableDatabase?.beginTransaction()
+            val id = readableDatabase?.update("person", values, "_id=?", ids)
+            //设置事务成功
+            readableDatabase?.setTransactionSuccessful()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            //关闭事务
+            readableDatabase?.endTransaction()
+            readableDatabase?.close()
+        }
     }
 
     override fun delete(context: Context) {
@@ -68,20 +93,32 @@ class DatabaseStoragePresenter(private val mView: DatabaseStorageImp) : Database
     }
 
     override fun query(context: Context, column: String) {
-        val dbHelper = DBHelper(context, 3)
-        val readableDatabase = dbHelper.readableDatabase
-        //select * from person
-        //val cursor: Cursor = readableDatabase.query("person", null, null, null, null, null, null)
-        val cursor: Cursor = readableDatabase.query("person", null, "_id=?"
-                , arrayOf("3"), null, null, null)
-        //取出Cursor 中所有的数据
-        while (cursor.moveToNext()) {
-            val id = cursor.getInt(cursor.getColumnIndex("_id"))
-            val name = cursor.getString(cursor.getColumnIndex("name"))
-            val age = cursor.getString(cursor.getColumnIndex("age"))
-            Toast.makeText(context, "id: " + id + " name: " + name + " age: " + age, Toast.LENGTH_SHORT).show()
+        var readableDatabase: SQLiteDatabase? = null
+        try {
+            val dbHelper = DBHelper(context, 3)
+            readableDatabase = dbHelper.readableDatabase
+            //开启事务
+            readableDatabase?.beginTransaction()
+            //select * from person
+            //val cursor: Cursor = readableDatabase.query("person", null, null, null, null, null, null)
+            val cursor: Cursor? = readableDatabase?.query("person", null, "_id=?"
+                    , arrayOf("3"), null, null, null)
+            //设置事务成功
+            readableDatabase?.setTransactionSuccessful()
+
+            //取出Cursor 中所有的数据
+            while (cursor?.moveToNext() == true) {
+                val id = cursor.getInt(cursor.getColumnIndex("_id"))
+                val name = cursor.getString(cursor.getColumnIndex("name"))
+                val age = cursor.getString(cursor.getColumnIndex("age"))
+                Toast.makeText(context, "id: $id name: $name age: $age", Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            //关闭事务
+            readableDatabase?.endTransaction()
+            readableDatabase?.close()
         }
-        cursor.close()
-        readableDatabase.close()
     }
 }
