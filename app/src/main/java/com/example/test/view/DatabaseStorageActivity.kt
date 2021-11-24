@@ -1,5 +1,6 @@
 package com.example.test.view
 
+import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import android.os.Bundle
@@ -65,10 +66,31 @@ class DatabaseStorageActivity : AppCompatActivity(), View.OnClickListener, Datab
         TODO("Not yet implemented")
     }
 
+    override fun insertDbSuccess() {
+        mCreateDbBtn?.post {
+            Toast.makeText(this, "插入数据成功", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun insertDbFailure() {
+        Toast.makeText(this, "插入数据失败", Toast.LENGTH_SHORT).show()
+    }
+
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.create_db -> mPresenter?.createDb(this, mDbVersion)
             R.id.update_db -> mPresenter?.updateDb(this, ++mDbVersion)
+            R.id.insert -> mPresenter?.insert(this, getValues())
+            R.id.update -> mPresenter?.updata(this, getValues(), arrayOf("1"))
+            R.id.delete -> mPresenter?.delete(this)
+            R.id.query -> mPresenter?.query(this, "name")
         }
+    }
+
+    fun getValues(): ContentValues {
+        val contentValues = ContentValues()
+        contentValues.put("name", "sb")
+        contentValues.put("age", 12)
+        return contentValues
     }
 }

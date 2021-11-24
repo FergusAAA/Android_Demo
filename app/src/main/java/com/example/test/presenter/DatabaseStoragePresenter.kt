@@ -1,12 +1,16 @@
 package com.example.test.presenter
 
+import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.widget.Toast
 import com.example.test.presenter.imp.DatabaseStoragePresenterImp
 import com.example.test.utils.DBHelper
 import com.example.test.view.imp.DatabaseStorageImp
+import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
 
-class DatabaseStoragePresenter(val mView: DatabaseStorageImp) : DatabaseStoragePresenterImp {
+class DatabaseStoragePresenter(private val mView: DatabaseStorageImp) : DatabaseStoragePresenterImp {
     private var mVersion = 1
 
     override fun createDb(context: Context?, version: Int) {
@@ -28,5 +32,56 @@ class DatabaseStoragePresenter(val mView: DatabaseStorageImp) : DatabaseStorageP
         } else {
             mVersion
         }
+    }
+
+    override fun insert(context: Context, values: ContentValues) {
+        val runnable = Runnable {
+            val dbHelper = DBHelper(context, 3)
+            val database = dbHelper.readableDatabase
+            val id = database.insert("person", null, values)
+            if (id == -1L) {
+                mView.insertDbFailure()
+            } else {
+                mView.insertDbSuccess()
+            }
+            database.close()
+        }
+        var subscribe = Observable
+                .just(runnable)
+                .subscribeOn(Schedulers.io())
+                .subscribe({ run: Runnable -> run.run() }, { t: Throwable? -> t?.printStackTrace() })
+
+    }
+
+    override fun updata(context: Context, values: ContentValues, ids: Array<String>) {
+        val dbHelper = DBHelper(context, 3)
+        val readableDatabase = dbHelper.readableDatabase
+        val id = readableDatabase.update("person", values, "_id=?", ids)
+        readableDatabase.close()
+    }
+
+    override fun delete(context: Context) {
+        val dbHelper = DBHelper(context, 3)
+        val readableDatabase = dbHelper.readableDatabase
+        val id = readableDatabase.delete("person", "_id=4", null)
+        readableDatabase.close()
+    }
+
+    override fun query(context: Context, column: String) {
+        val dbHelper = DBHelper(context, 3)
+        val readableDatabase = dbHelper.readableDatabase
+        //select * from person
+        //val cursor: Cursor = readableDatabase.query("person", null, null, null, null, null, null)
+        val cursor: Cursor = readableDatabase.query("person", null, "_id=?"
+                , arrayOf("3"), null, null, null)
+        //取出Cursor 中所有的数据
+        while (cursor.moveToNext()) {
+            val id = cursor.getInt(cursor.getColumnIndex("_id"))
+            val name = cursor.getString(cursor.getColumnIndex("name"))
+            val age = cursor.getString(cursor.getColumnIndex("age"))
+            Toast.makeText(context, "id: " + id + " name: " + name + " age: " + age, Toast.LENGTH_SHORT).show()
+        }
+        cursor.close()
+        readableDatabase.close()
     }
 }

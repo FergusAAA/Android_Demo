@@ -9,4 +9,8 @@ interface DatabaseStorageImp {
     fun updateDbSuccess()
 
     fun updateDbFailure()
+
+    fun insertDbFailure()
+
+    fun insertDbSuccess()
 }
