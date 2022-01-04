@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var btn2: TextView? = null
     private var btn3: TextView? = null
     private var btn4: TextView? = null
+    private var btn5: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,10 +21,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btn2 = findViewById(R.id.btn_2)
         btn3 = findViewById(R.id.btn_3)
         btn4 = findViewById(R.id.btn_4)
+        btn5 = findViewById(R.id.btn_5)
         btn1?.setOnClickListener(this)
         btn2?.setOnClickListener(this)
         btn3?.setOnClickListener(this)
         btn4?.setOnClickListener(this)
+        btn5?.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_2 -> startActivity(InnerFirestoneActivity::class.java)
             R.id.btn_3 -> startActivity(ExternalStorageActivity::class.java)
             R.id.btn_4 -> startActivity(DatabaseStorageActivity::class.java)
+            R.id.btn_5 -> startActivity(ContentResolverActivity::class.java)
         }
     }
 
