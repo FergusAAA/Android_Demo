@@ -1,45 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:gravity="center">
 
-    <Button
-        android:id="@+id/btn_alpha"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="透明度渐变" />
+    <TextView
+        android:id="@+id/btn_view"
+        style="@style/button"
+        android:layout_centerInParent="true"
+        android:background="@drawable/btn_background"
+        android:focusable="true"
+        android:nextFocusDown="@id/btn_drawable"
+        android:text="View动画" />
 
-    <Button
-        android:id="@+id/btn_scale"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="缩放渐变" />
+    <TextView
+        android:id="@+id/btn_drawable"
+        style="@style/button"
+        android:layout_below="@id/btn_view"
+        android:layout_centerInParent="true"
+        android:background="@drawable/btn_background"
+        android:focusable="true"
+        android:nextFocusUp="@id/btn_view"
+        android:text="Drawable动画" />
 
-    <Button
-        android:id="@+id/btn_tran"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="位移渐变" />
+    <FrameLayout
+        android:id="@+id/animation_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-    <Button
-        android:id="@+id/btn_rotate"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="旋转渐变" />
-
-    <Button
-        android:id="@+id/btn_set"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="组合渐变" />
-
-    <ImageView
-        android:id="@+id/img_show"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="48dp"
-        android:src="@drawable/img_for_tween" />
-
-</LinearLayout>
+</RelativeLayout>
