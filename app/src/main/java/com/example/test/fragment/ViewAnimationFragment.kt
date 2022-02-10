@@ -25,9 +25,9 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
     private var testImg: ImageView? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         mView = inflater.inflate(R.layout.fragment_view_animation, container, false)
         return mView
@@ -60,8 +60,8 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
         alphaAnimationXml = mView?.findViewById(R.id.alpha_animation_xml)
         tranlateAnimationCode = mView?.findViewById(R.id.translate_animation_code)
         tranlateAnimationXml = mView?.findViewById(R.id.translate_animation_xml)
-        setAnimationCode = mView?.findViewById(R.id.set_animation_code)
-        setAnimationCode = mView?.findViewById(R.id.set_animation_xml)
+        setAnimationCode = mView?.findViewById(R.id.set_animation_code_1)
+        setAnimationCode = mView?.findViewById(R.id.set_animation_xml_1)
         testImg = mView?.findViewById(R.id.test_image)
 
         scaleAnimationCode?.requestFocus()
@@ -77,6 +77,8 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
             R.id.alpha_animation_xml -> startAlphaAnimationXml()
             R.id.translate_animation_code -> startTranslateAnimationCode()
             R.id.translate_animation_xml -> startTranslateAnimationXml()
+            R.id.set_animation_code_1 -> startSetAnimationCode_1()
+            R.id.set_animation_xml_1 -> startSetAnimationXml_1()
         }
     }
 
@@ -86,14 +88,14 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
      */
     fun startScaleAnimationCode() {
         val animation = ScaleAnimation(
-            0.8f,
-            1.8f,
-            0.8f,
-            1.8f,
-            Animation.RELATIVE_TO_SELF,
-            0.5f,
-            Animation.RELATIVE_TO_SELF,
-            0.5f
+                0.8f,
+                1.8f,
+                0.8f,
+                1.8f,
+                Animation.RELATIVE_TO_SELF,
+                0.5f,
+                Animation.RELATIVE_TO_SELF,
+                0.5f
         )
         animation.startOffset = 500
         animation.duration = 200
@@ -116,12 +118,12 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
      */
     fun startRotateAnimationCode() {
         val rotateAnimation = RotateAnimation(
-            -90f,
-            90f,
-            Animation.RELATIVE_TO_SELF,
-            0.5f,
-            Animation.RELATIVE_TO_SELF,
-            0f
+                -90f,
+                90f,
+                Animation.RELATIVE_TO_SELF,
+                0.5f,
+                Animation.RELATIVE_TO_SELF,
+                0f
         )
         rotateAnimation.duration = 5000
         rotateAnimation.fillAfter = true
@@ -165,14 +167,14 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
      */
     fun startTranslateAnimationCode() {
         val translateAnimation = TranslateAnimation(
-            Animation.ABSOLUTE,
-            0f,
-            Animation.RELATIVE_TO_SELF,
-            0.5f,
-            Animation.ABSOLUTE,
-            0f,
-            Animation.RELATIVE_TO_SELF,
-            0.5f
+                Animation.ABSOLUTE,
+                0f,
+                Animation.RELATIVE_TO_SELF,
+                0.5f,
+                Animation.ABSOLUTE,
+                0f,
+                Animation.RELATIVE_TO_SELF,
+                0.5f
         )
         translateAnimation.fillAfter = true
         translateAnimation.duration = 4000
@@ -195,20 +197,17 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
      * code控制
      * 透明度从透明到不透明，持续2s，接着进行360度的动画，持续1s
      */
-    fun startSetAnimationCode() {
-        val translateAnimation = TranslateAnimation(
-            Animation.ABSOLUTE,
-            0f,
-            Animation.RELATIVE_TO_SELF,
-            0.5f,
-            Animation.ABSOLUTE,
-            0f,
-            Animation.RELATIVE_TO_SELF,
-            0.5f
-        )
-        translateAnimation.fillAfter = true
-        translateAnimation.duration = 4000
-        testImg?.startAnimation(translateAnimation)
+    fun startSetAnimationCode_1() {
+        val alphaAnimation = AlphaAnimation(0f, 1f)
+        alphaAnimation.duration = 2000
+        val rotateAnimation = RotateAnimation(0f, 360f,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
+        rotateAnimation.duration = 1000
+        rotateAnimation.startOffset = 2000
+        val animationSet = AnimationSet(true)
+        animationSet.addAnimation(alphaAnimation)
+        animationSet.addAnimation(rotateAnimation)
+        testImg?.startAnimation(animationSet)
     }
 
     /**
@@ -216,7 +215,7 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
      * Xml控制
      * 透明度从透明到不透明，持续2s，接着进行360度的动画，持续1s
      */
-    fun startSetAnimationXml() {
+    fun startSetAnimationXml_1() {
         val translateAnimation = AnimationUtils.loadAnimation(activity, R.anim.translate_test)
         translateAnimation.fillAfter = true
         translateAnimation.duration = 4000

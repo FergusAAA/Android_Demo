@@ -84,23 +84,23 @@
         app:layout_constraintTop_toBottomOf="@id/translate_animation_code" />
 
     <TextView
-        android:id="@+id/set_animation_code"
+        android:id="@+id/set_animation_code_1"
         style="@style/button"
         android:background="@drawable/btn_background"
         android:text="复合动画:代码实现"
-        app:layout_constraintBottom_toTopOf="@id/set_animation_xml"
+        app:layout_constraintBottom_toTopOf="@id/set_animation_xml_1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/translate_animation_xml" />
 
     <TextView
-        android:id="@+id/set_animation_xml"
+        android:id="@+id/set_animation_xml_1"
         style="@style/button"
         android:background="@drawable/btn_background"
         android:text="复合动画:xml实现"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/set_animation_code" />
+        app:layout_constraintTop_toBottomOf="@id/set_animation_code_1" />
 
     <ImageView
         android:id="@+id/test_image"
