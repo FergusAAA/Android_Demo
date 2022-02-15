@@ -14,7 +14,7 @@
         android:text="缩放动画:代码实现"
         app:layout_constraintBottom_toTopOf="@id/scale_animation_xml"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/set_animation_code_1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -22,8 +22,8 @@
         style="@style/button"
         android:background="@drawable/btn_background"
         android:text="缩放动画:xml实现"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/scale_animation_code"
+        app:layout_constraintRight_toRightOf="@id/scale_animation_code"
         app:layout_constraintTop_toBottomOf="@id/scale_animation_code" />
 
     <TextView
@@ -32,8 +32,8 @@
         android:background="@drawable/btn_background"
         android:text="旋转动画:代码实现"
         app:layout_constraintBottom_toTopOf="@id/rotate_animation_xml"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/scale_animation_code"
+        app:layout_constraintRight_toRightOf="@id/scale_animation_code"
         app:layout_constraintTop_toBottomOf="@id/scale_animation_xml" />
 
     <TextView
@@ -41,8 +41,8 @@
         style="@style/button"
         android:background="@drawable/btn_background"
         android:text="旋转动画:xml实现"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/scale_animation_code"
+        app:layout_constraintRight_toRightOf="@id/scale_animation_code"
         app:layout_constraintTop_toBottomOf="@id/rotate_animation_code" />
 
     <TextView
@@ -51,8 +51,8 @@
         android:background="@drawable/btn_background"
         android:text="透明动画:代码实现"
         app:layout_constraintBottom_toTopOf="@id/alpha_animation_xml"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/scale_animation_code"
+        app:layout_constraintRight_toRightOf="@id/scale_animation_code"
         app:layout_constraintTop_toBottomOf="@id/rotate_animation_xml" />
 
     <TextView
@@ -60,8 +60,8 @@
         style="@style/button"
         android:background="@drawable/btn_background"
         android:text="透明动画:xml实现"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/scale_animation_code"
+        app:layout_constraintRight_toRightOf="@id/scale_animation_code"
         app:layout_constraintTop_toBottomOf="@id/alpha_animation_code" />
 
     <TextView
@@ -70,8 +70,8 @@
         android:background="@drawable/btn_background"
         android:text="平移动画:代码实现"
         app:layout_constraintBottom_toTopOf="@id/translate_animation_xml"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/scale_animation_code"
+        app:layout_constraintRight_toRightOf="@id/scale_animation_code"
         app:layout_constraintTop_toBottomOf="@id/alpha_animation_xml" />
 
     <TextView
@@ -79,8 +79,8 @@
         style="@style/button"
         android:background="@drawable/btn_background"
         android:text="平移动画:xml实现"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/scale_animation_code"
+        app:layout_constraintRight_toRightOf="@id/scale_animation_code"
         app:layout_constraintTop_toBottomOf="@id/translate_animation_code" />
 
     <TextView
@@ -89,18 +89,27 @@
         android:background="@drawable/btn_background"
         android:text="复合动画:代码实现"
         app:layout_constraintBottom_toTopOf="@id/set_animation_xml_1"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/scale_animation_code"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/translate_animation_xml" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/set_animation_xml_1"
         style="@style/button"
         android:background="@drawable/btn_background"
         android:text="复合动画:xml实现"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/set_animation_code_1"
+        app:layout_constraintRight_toRightOf="@id/set_animation_code_1"
         app:layout_constraintTop_toBottomOf="@id/set_animation_code_1" />
+
+    <TextView
+        android:id="@+id/set_animation_code_2"
+        style="@style/button"
+        android:background="@drawable/btn_background"
+        android:text="复合动画:ViewPropertyAnimator实现"
+        app:layout_constraintLeft_toLeftOf="@id/set_animation_code_1"
+        app:layout_constraintRight_toRightOf="@id/set_animation_code_1"
+        app:layout_constraintTop_toBottomOf="@id/set_animation_xml_1" />
 
     <ImageView
         android:id="@+id/test_image"
