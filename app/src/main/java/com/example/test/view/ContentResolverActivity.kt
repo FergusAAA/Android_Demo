@@ -10,10 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.test.R
 
 class ContentResolverActivity : AppCompatActivity(), View.OnClickListener {
-    var queryBtn: TextView? = null
-    var insertBtn: TextView? = null
-    var updateBtn: TextView? = null
-    var deleteBtn: TextView? = null
+    lateinit var queryBtn: TextView
+    lateinit var insertBtn: TextView
+    lateinit var updateBtn: TextView
+    lateinit var deleteBtn: TextView
 
     companion object {
         const val TAG = "ContentResolverActivity"
@@ -27,10 +27,10 @@ class ContentResolverActivity : AppCompatActivity(), View.OnClickListener {
         updateBtn = findViewById(R.id.btn_3)
         deleteBtn = findViewById(R.id.btn_4)
 
-        queryBtn?.setOnClickListener(this)
-        insertBtn?.setOnClickListener(this)
-        updateBtn?.setOnClickListener(this)
-        deleteBtn?.setOnClickListener(this)
+        queryBtn.setOnClickListener(this)
+        insertBtn.setOnClickListener(this)
+        updateBtn.setOnClickListener(this)
+        deleteBtn.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {

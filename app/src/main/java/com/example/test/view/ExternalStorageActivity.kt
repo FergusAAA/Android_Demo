@@ -25,8 +25,8 @@ class ExternalStorageActivity : AppCompatActivity(), OnClickListener {
         private const val TAG: String = "ExternalStorageActivity"
     }
 
-    private var mFileName: TextView? = null
-    private var mFileContent: TextView? = null
+    private lateinit var mFileName: TextView
+    private lateinit var mFileContent: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,8 +58,8 @@ class ExternalStorageActivity : AppCompatActivity(), OnClickListener {
             Toast.makeText(this, "SD卡没有挂载", Toast.LENGTH_SHORT).show()
             return
         }
-        val fileName = mFileName?.text.toString()
-        val fileContent = mFileContent?.text.toString()
+        val fileName = mFileName.text.toString()
+        val fileContent = mFileContent.text.toString()
         val fileDir: String
         if (isInPackageName) {
             fileDir = getExternalFilesDir(null)?.absolutePath + "/" + fileName
@@ -100,7 +100,7 @@ class ExternalStorageActivity : AppCompatActivity(), OnClickListener {
         if (!TextUtils.equals(Environment.getExternalStorageState(), Environment.MEDIA_MOUNTED)) {
             return
         }
-        val fileName = mFileName!!.text.toString()
+        val fileName = mFileName.text.toString()
         val fileContent: String
         //拿到文件路径
         val fileDir = if (isInPackageName) {
@@ -123,7 +123,7 @@ class ExternalStorageActivity : AppCompatActivity(), OnClickListener {
             len = fileInputStream.read(bytes)
         }
         fileContent = byteArrayOutputStream.toString()
-        mFileContent?.text = fileContent
+        mFileContent.text = fileContent
         Toast.makeText(this, "读取成功", Toast.LENGTH_SHORT).show()
     }
 

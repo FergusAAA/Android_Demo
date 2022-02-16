@@ -12,9 +12,9 @@ import java.io.FileOutputStream
 import java.io.InputStream
 
 class InnerFirestoneActivity : AppCompatActivity(), View.OnClickListener {
-    private var save: TextView? = null
-    private var read: TextView? = null
-    private var img: ImageView? = null
+    private lateinit var save: TextView
+    private lateinit var read: TextView
+    private lateinit var img: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +23,8 @@ class InnerFirestoneActivity : AppCompatActivity(), View.OnClickListener {
         read = findViewById(R.id.btn_2)
         img = findViewById(R.id.img)
 
-        save?.setOnClickListener(this)
-        read?.setOnClickListener(this)
+        save.setOnClickListener(this)
+        read.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -68,8 +68,8 @@ class InnerFirestoneActivity : AppCompatActivity(), View.OnClickListener {
         val bitmap = BitmapFactory.decodeFile(bitmapDir)
         //设置资源
         if (bitmap != null) {
-            img?.setImageBitmap(bitmap)
-            img?.visibility = View.VISIBLE
+            img.setImageBitmap(bitmap)
+            img.visibility = View.VISIBLE
         }
     }
 }

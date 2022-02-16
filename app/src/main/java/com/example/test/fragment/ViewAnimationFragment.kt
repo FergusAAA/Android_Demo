@@ -12,25 +12,25 @@ import com.example.test.R
 
 class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
 
-    private var mView: View? = null
-    private var scaleAnimationCode: TextView? = null
-    private var scaleAnimationXml: TextView? = null
-    private var rotateAnimationCode: TextView? = null
-    private var rotateAnimationXml: TextView? = null
-    private var alphaAnimationCode: TextView? = null
-    private var alphaAnimationXml: TextView? = null
-    private var tranlateAnimationCode: TextView? = null
-    private var tranlateAnimationXml: TextView? = null
-    private var setAnimationCode_1: TextView? = null
-    private var setAnimationCode_2: TextView? = null
-    private var setAnimationXml: TextView? = null
-    private var testImg: ImageView? = null
+    private lateinit var mView: View
+    private lateinit var scaleAnimationCode: TextView
+    private lateinit var scaleAnimationXml: TextView
+    private lateinit var rotateAnimationCode: TextView
+    private lateinit var rotateAnimationXml: TextView
+    private lateinit var alphaAnimationCode: TextView
+    private lateinit var alphaAnimationXml: TextView
+    private lateinit var tranlateAnimationCode: TextView
+    private lateinit var tranlateAnimationXml: TextView
+    private lateinit var setAnimationCode_1: TextView
+    private lateinit var setAnimationCode_2: TextView
+    private lateinit var setAnimationXml: TextView
+    private lateinit var testImg: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         mView = inflater.inflate(R.layout.fragment_view_animation, container, false)
         return mView
     }
@@ -41,34 +41,34 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun initListener() {
-        scaleAnimationCode?.setOnClickListener(this)
-        scaleAnimationXml?.setOnClickListener(this)
-        rotateAnimationCode?.setOnClickListener(this)
-        rotateAnimationXml?.setOnClickListener(this)
-        alphaAnimationCode?.setOnClickListener(this)
-        alphaAnimationXml?.setOnClickListener(this)
-        tranlateAnimationCode?.setOnClickListener(this)
-        tranlateAnimationXml?.setOnClickListener(this)
-        setAnimationCode_1?.setOnClickListener(this)
-        setAnimationCode_2?.setOnClickListener(this)
-        setAnimationXml?.setOnClickListener(this)
+        scaleAnimationCode.setOnClickListener(this)
+        scaleAnimationXml.setOnClickListener(this)
+        rotateAnimationCode.setOnClickListener(this)
+        rotateAnimationXml.setOnClickListener(this)
+        alphaAnimationCode.setOnClickListener(this)
+        alphaAnimationXml.setOnClickListener(this)
+        tranlateAnimationCode.setOnClickListener(this)
+        tranlateAnimationXml.setOnClickListener(this)
+        setAnimationCode_1.setOnClickListener(this)
+        setAnimationCode_2.setOnClickListener(this)
+        setAnimationXml.setOnClickListener(this)
     }
 
     private fun initView() {
-        scaleAnimationCode = mView?.findViewById(R.id.scale_animation_code)
-        scaleAnimationXml = mView?.findViewById(R.id.scale_animation_xml)
-        rotateAnimationCode = mView?.findViewById(R.id.rotate_animation_code)
-        rotateAnimationXml = mView?.findViewById(R.id.rotate_animation_xml)
-        alphaAnimationCode = mView?.findViewById(R.id.alpha_animation_code)
-        alphaAnimationXml = mView?.findViewById(R.id.alpha_animation_xml)
-        tranlateAnimationCode = mView?.findViewById(R.id.translate_animation_code)
-        tranlateAnimationXml = mView?.findViewById(R.id.translate_animation_xml)
-        setAnimationCode_1 = mView?.findViewById(R.id.set_animation_code_1)
-        setAnimationXml = mView?.findViewById(R.id.set_animation_xml_1)
-        setAnimationCode_2 = mView?.findViewById(R.id.set_animation_code_2)
-        testImg = mView?.findViewById(R.id.test_image)
+        scaleAnimationCode = mView.findViewById(R.id.scale_animation_code)
+        scaleAnimationXml = mView.findViewById(R.id.scale_animation_xml)
+        rotateAnimationCode = mView.findViewById(R.id.rotate_animation_code)
+        rotateAnimationXml = mView.findViewById(R.id.rotate_animation_xml)
+        alphaAnimationCode = mView.findViewById(R.id.alpha_animation_code)
+        alphaAnimationXml = mView.findViewById(R.id.alpha_animation_xml)
+        tranlateAnimationCode = mView.findViewById(R.id.translate_animation_code)
+        tranlateAnimationXml = mView.findViewById(R.id.translate_animation_xml)
+        setAnimationCode_1 = mView.findViewById(R.id.set_animation_code_1)
+        setAnimationXml = mView.findViewById(R.id.set_animation_xml_1)
+        setAnimationCode_2 = mView.findViewById(R.id.set_animation_code_2)
+        testImg = mView.findViewById(R.id.test_image)
 
-        scaleAnimationCode?.requestFocus()
+        scaleAnimationCode.requestFocus()
     }
 
     override fun onClick(v: View?) {
@@ -105,7 +105,7 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
         animation.startOffset = 500
         animation.duration = 200
         animation.fillBefore = true
-        testImg?.startAnimation(animation)
+        testImg.startAnimation(animation)
     }
 
     /**
@@ -114,7 +114,7 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
      */
     fun startScaleAnimationXml() {
         val animation = AnimationUtils.loadAnimation(activity, R.anim.scale_test)
-        testImg?.startAnimation(animation)
+        testImg.startAnimation(animation)
     }
 
     /**
@@ -132,7 +132,7 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
         )
         rotateAnimation.duration = 5000
         rotateAnimation.fillAfter = true
-        testImg?.startAnimation(rotateAnimation)
+        testImg.startAnimation(rotateAnimation)
     }
 
     /**
@@ -141,7 +141,7 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
      */
     fun startRotateAnimationXml() {
         val rotateAnimation = AnimationUtils.loadAnimation(activity, R.anim.rotate_test)
-        testImg?.startAnimation(rotateAnimation)
+        testImg.startAnimation(rotateAnimation)
     }
 
     /**
@@ -152,7 +152,7 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
         val alphaAnimation = AlphaAnimation(1f, 0f)
         alphaAnimation.fillAfter = true
         alphaAnimation.duration = 4000
-        testImg?.startAnimation(alphaAnimation)
+        testImg.startAnimation(alphaAnimation)
     }
 
     /**
@@ -163,7 +163,7 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
         val alphaAnimation = AnimationUtils.loadAnimation(activity, R.anim.alpha_test)
         alphaAnimation.fillAfter = true
         alphaAnimation.duration = 4000
-        testImg?.startAnimation(alphaAnimation)
+        testImg.startAnimation(alphaAnimation)
     }
 
     /**
@@ -183,7 +183,7 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
         )
         translateAnimation.fillAfter = true
         translateAnimation.duration = 4000
-        testImg?.startAnimation(translateAnimation)
+        testImg.startAnimation(translateAnimation)
     }
 
     /**
@@ -194,7 +194,7 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
         val translateAnimation = AnimationUtils.loadAnimation(activity, R.anim.translate_test)
         translateAnimation.fillAfter = true
         translateAnimation.duration = 4000
-        testImg?.startAnimation(translateAnimation)
+        testImg.startAnimation(translateAnimation)
     }
 
     /**
@@ -221,7 +221,7 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
         animationSet.addAnimation(alphaAnimation)
         animationSet.addAnimation(rotateAnimation)
         Log.w("TAG", "startSetAnimationCode_1: 3")
-        testImg?.startAnimation(animationSet)
+        testImg.startAnimation(animationSet)
         Log.w("TAG", "startSetAnimationCode_1: 4")
     }
 
@@ -232,7 +232,7 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
      */
     fun startSetAnimationXml_1() {
         val translateAnimation = AnimationUtils.loadAnimation(activity, R.anim.set_test)
-        testImg?.startAnimation(translateAnimation)
+        testImg.startAnimation(translateAnimation)
     }
 
 
@@ -243,10 +243,10 @@ class ViewAnimationFragment : BaseFragment(), View.OnClickListener {
      * 透明度从透明到不透明，持续2s，接着进行360度的动画，持续1s
      */
     fun startSetAnimationCode_2() {
-        testImg?.animate()?.alpha(0f)?.setDuration(0)?.withEndAction {
-            testImg?.animate()?.alpha(1f)?.setDuration(2000)?.withEndAction{
-                testImg?.animate()?.rotationBy(360f)?.setDuration(1000)?.start()
-            }?.start()
-        }?.start()
+        testImg.animate().alpha(0f).setDuration(0).withEndAction {
+            testImg.animate().alpha(1f).setDuration(2000).withEndAction {
+                testImg.animate().rotationBy(360f).setDuration(1000).start()
+            }.start()
+        }.start()
     }
 }

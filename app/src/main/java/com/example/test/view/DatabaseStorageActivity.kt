@@ -11,13 +11,13 @@ import com.example.test.presenter.DatabaseStoragePresenter
 import com.example.test.view.imp.DatabaseStorageImp
 
 class DatabaseStorageActivity : AppCompatActivity(), View.OnClickListener, DatabaseStorageImp {
-    private var mCreateDbBtn: TextView? = null
-    private var mUpdateDbBtn: TextView? = null
-    private var mInsertBtn: TextView? = null
-    private var mUpdateBtn: TextView? = null
-    private var mDelBtn: TextView? = null
-    private var mQueryBtn: TextView? = null
-    private var mTestBtn: TextView? = null
+    private lateinit var mCreateDbBtn: TextView
+    private lateinit var mUpdateDbBtn: TextView
+    private lateinit var mInsertBtn: TextView
+    private lateinit var mUpdateBtn: TextView
+    private lateinit var mDelBtn: TextView
+    private lateinit var mQueryBtn: TextView
+    private lateinit var mTestBtn: TextView
 
     //数据库版本
     private var mDbVersion: Int = 1
@@ -39,13 +39,13 @@ class DatabaseStorageActivity : AppCompatActivity(), View.OnClickListener, Datab
         mQueryBtn = findViewById(R.id.query)
         mTestBtn = findViewById(R.id.test_transaction)
 
-        mCreateDbBtn?.setOnClickListener(this)
-        mUpdateDbBtn?.setOnClickListener(this)
-        mInsertBtn?.setOnClickListener(this)
-        mUpdateBtn?.setOnClickListener(this)
-        mDelBtn?.setOnClickListener(this)
-        mQueryBtn?.setOnClickListener(this)
-        mTestBtn?.setOnClickListener(this)
+        mCreateDbBtn.setOnClickListener(this)
+        mUpdateDbBtn.setOnClickListener(this)
+        mInsertBtn.setOnClickListener(this)
+        mUpdateBtn.setOnClickListener(this)
+        mDelBtn.setOnClickListener(this)
+        mQueryBtn.setOnClickListener(this)
+        mTestBtn.setOnClickListener(this)
 
         mPresenter = DatabaseStoragePresenter(this)
     }
@@ -67,7 +67,7 @@ class DatabaseStorageActivity : AppCompatActivity(), View.OnClickListener, Datab
     }
 
     override fun insertDbSuccess() {
-        mCreateDbBtn?.post {
+        mCreateDbBtn.post {
             Toast.makeText(this, "插入数据成功", Toast.LENGTH_SHORT).show()
         }
     }

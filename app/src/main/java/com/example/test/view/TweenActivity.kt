@@ -15,11 +15,11 @@ import com.example.test.fragment.DrawableAnimationFragment
 import com.example.test.fragment.ViewAnimationFragment
 
 class TweenActivity : AppCompatActivity(), View.OnClickListener {
-    private var btnView: TextView? = null
-    private var btnDrawable: TextView? = null
-    private var animationContainer: FrameLayout? = null
+    private lateinit var btnView: TextView
+    private lateinit var btnDrawable: TextView
+    private lateinit var animationContainer: FrameLayout
+    private lateinit var currentFragment: BaseFragment
     private val fragmentManager = getSupportFragmentManager()
-    private var currentFragment: BaseFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +32,10 @@ class TweenActivity : AppCompatActivity(), View.OnClickListener {
         btnDrawable = findViewById(R.id.btn_drawable)
         animationContainer = findViewById(R.id.animation_container)
 
-        btnView?.requestFocus()
+        btnView.requestFocus()
 
-        btnView?.setOnClickListener(this)
-        btnDrawable?.setOnClickListener(this)
+        btnView.setOnClickListener(this)
+        btnDrawable.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -69,11 +69,11 @@ class TweenActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
-        if (currentFragment?.dispatchKeyEvent(event) == true) {
+        if (currentFragment.dispatchKeyEvent(event) == true) {
             return true
         }
         if (event?.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_BACK) {
-            if (currentFragment?.isVisible == true) {
+            if (currentFragment.isVisible == true) {
                 fragmentManager.beginTransaction().remove(currentFragment!!).commit()
                 return true
             }

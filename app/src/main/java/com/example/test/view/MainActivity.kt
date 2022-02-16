@@ -8,11 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.test.R
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private var btn1: TextView? = null
-    private var btn2: TextView? = null
-    private var btn3: TextView? = null
-    private var btn4: TextView? = null
-    private var btn5: TextView? = null
+    private lateinit var btn1: TextView
+    private lateinit var btn2: TextView
+    private lateinit var btn3: TextView
+    private lateinit var btn4: TextView
+    private lateinit var btn5: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +22,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btn3 = findViewById(R.id.btn_3)
         btn4 = findViewById(R.id.btn_4)
         btn5 = findViewById(R.id.btn_5)
-        btn1?.setOnClickListener(this)
-        btn2?.setOnClickListener(this)
-        btn3?.setOnClickListener(this)
-        btn4?.setOnClickListener(this)
-        btn5?.setOnClickListener(this)
+        btn1.setOnClickListener(this)
+        btn2.setOnClickListener(this)
+        btn3.setOnClickListener(this)
+        btn4.setOnClickListener(this)
+        btn5.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
