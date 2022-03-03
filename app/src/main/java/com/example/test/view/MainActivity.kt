@@ -1,5 +1,6 @@
 package com.example.test.view
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var btn5: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState, null)
         setContentView(R.layout.activity_main)
         btn1 = findViewById(R.id.btn_1)
         btn2 = findViewById(R.id.btn_2)

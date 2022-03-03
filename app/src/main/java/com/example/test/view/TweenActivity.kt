@@ -18,7 +18,7 @@ class TweenActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var btnView: TextView
     private lateinit var btnDrawable: TextView
     private lateinit var animationContainer: FrameLayout
-    private lateinit var currentFragment: BaseFragment
+    private var currentFragment: BaseFragment? = null
     private val fragmentManager = getSupportFragmentManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,11 +69,11 @@ class TweenActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
-        if (currentFragment.dispatchKeyEvent(event) == true) {
+        if (currentFragment?.dispatchKeyEvent(event) == true) {
             return true
         }
         if (event?.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_BACK) {
-            if (currentFragment.isVisible == true) {
+            if (currentFragment?.isVisible == true) {
                 fragmentManager.beginTransaction().remove(currentFragment!!).commit()
                 return true
             }
