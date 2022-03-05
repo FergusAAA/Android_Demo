@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.DatabaseStorageActivity" />
+        <activity android:name=".view.PropertyActivity" />
     </application>
 
 </manifest>
