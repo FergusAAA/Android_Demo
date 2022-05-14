@@ -6,7 +6,7 @@
         <option name="formatter" value="ECLIPSE" />
         <option name="importOrder" value="java;javax;org;com;kt;" />
         <option name="importOrderConfigFilePath" value="$PROJECT_DIR$/../../formatter/format.xml" />
-        <option name="pathToConfigFileJava" value="$PROJECT_DIR$/../../formatter/format.xml" />
+        <option name="pathToConfigFileJava" value="E:/Desktop/工作/文档/注释模板/formatter/format.xml" />
         <option name="selectedJavaProfile" value="IDA40" />
         <option name="useForLiveTemplates" value="true" />
       </ProjectSpecificProfile>
