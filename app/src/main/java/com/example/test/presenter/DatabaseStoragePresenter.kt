@@ -8,8 +8,8 @@ import android.widget.Toast
 import com.example.test.presenter.imp.DatabaseStoragePresenterImp
 import com.example.test.utils.DBHelper
 import com.example.test.view.imp.DatabaseStorageImp
-import io.reactivex.Observable
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class DatabaseStoragePresenter(private val mView: DatabaseStorageImp) : DatabaseStoragePresenterImp {
     private var mVersion = 1
