@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/WorkSpace/Android_Project_Save/Android_Demo/app/src/main/res/layout/activity_service_test.xml" value="0.3828571428571429" />
         <entry key="..\:/workspace/Android_project_save/AndroidDemo/app/src/main/res/drawable/btn_background.xml" value="0.20364583333333333" />
         <entry key="..\:/workspace/Android_project_save/AndroidDemo/app/src/main/res/drawable/drawable_anim_test.xml" value="0.116" />
         <entry key="..\:/workspace/Android_project_save/AndroidDemo/app/src/main/res/layout/activity_content_resolver.xml" value="0.264" />
@@ -16,7 +17,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
