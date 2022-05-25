@@ -13,5 +13,7 @@ class Constant {
         const val SERVICE_STOP = "Service_Stop"
         const val BIND_SERVICE = "Bind_Service"
         const val UNBIND_SERVICE = "Unbind_Service"
+        const val FOREGROUND_SERVICE = "前台Service"
+        const val STOP_FOREGROUND_SERVICE = "stop_前台Service"
     }
 }

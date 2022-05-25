@@ -13,11 +13,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.test.R
 import com.example.test.adapter.ButtonAdapter
 import com.example.test.model.Constant
+import com.example.test.service.ForegroundService
 import com.example.test.service.MyService
 
 class ServiceTest : Activity() {
     private lateinit var mBtnRecyclerView: RecyclerView
-    private val mDataList = arrayListOf(Constant.SERVICE_START, Constant.SERVICE_STOP, Constant.BIND_SERVICE, Constant.UNBIND_SERVICE)
+    private val mDataList = arrayListOf(Constant.SERVICE_START, Constant.SERVICE_STOP,
+            Constant.BIND_SERVICE, Constant.UNBIND_SERVICE, Constant.FOREGROUND_SERVICE,
+            Constant.STOP_FOREGROUND_SERVICE)
 
     private lateinit var mConnection: ServiceConnection
 
@@ -54,6 +57,8 @@ class ServiceTest : Activity() {
             Constant.SERVICE_STOP -> stopService(MyService::class.java)
             Constant.BIND_SERVICE -> bindService(MyService::class.java)
             Constant.UNBIND_SERVICE -> unbindService(mConnection)
+            Constant.FOREGROUND_SERVICE -> startService(ForegroundService::class.java)
+            Constant.STOP_FOREGROUND_SERVICE -> stopService(ForegroundService::class.java)
         }
     }
 

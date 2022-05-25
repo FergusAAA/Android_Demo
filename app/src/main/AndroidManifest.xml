@@ -3,6 +3,7 @@
     package="com.example.test">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +18,10 @@
 
         <service
             android:name=".service.MyService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".service.ForegroundService"
             android:enabled="true"
             android:exported="true" />
 
