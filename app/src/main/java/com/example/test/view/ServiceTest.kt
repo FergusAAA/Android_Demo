@@ -1,6 +1,7 @@
 package com.example.test.view
 
 import android.app.Activity
+import android.app.IntentService
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
@@ -14,13 +15,14 @@ import com.example.test.R
 import com.example.test.adapter.ButtonAdapter
 import com.example.test.model.Constant
 import com.example.test.service.ForegroundService
+import com.example.test.service.MyIntentService
 import com.example.test.service.MyService
 
 class ServiceTest : Activity() {
     private lateinit var mBtnRecyclerView: RecyclerView
     private val mDataList = arrayListOf(Constant.SERVICE_START, Constant.SERVICE_STOP,
             Constant.BIND_SERVICE, Constant.UNBIND_SERVICE, Constant.FOREGROUND_SERVICE,
-            Constant.STOP_FOREGROUND_SERVICE)
+            Constant.STOP_FOREGROUND_SERVICE, Constant.INTENT_SERVICE, Constant.STOP_INTENT_SERVICE)
 
     private lateinit var mConnection: ServiceConnection
 
@@ -59,6 +61,8 @@ class ServiceTest : Activity() {
             Constant.UNBIND_SERVICE -> unbindService(mConnection)
             Constant.FOREGROUND_SERVICE -> startService(ForegroundService::class.java)
             Constant.STOP_FOREGROUND_SERVICE -> stopService(ForegroundService::class.java)
+            Constant.INTENT_SERVICE -> startService(MyIntentService::class.java)
+            Constant.STOP_INTENT_SERVICE -> stopService(MyIntentService::class.java)
         }
     }
 
