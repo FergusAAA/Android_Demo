@@ -41,4 +41,6 @@ dependencies {
     // https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxjava
 //    implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.2.21'
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
+    // https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-viewmodel
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 }
