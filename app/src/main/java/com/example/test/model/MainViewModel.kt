@@ -17,10 +17,6 @@ import androidx.lifecycle.ViewModel
  * @Copyright (C) 2022 YSTEN
  * @author:       xuguangdong
  */
-class MainViewModel : ViewModel() {
-    /**
-     * 记数器数字
-     */
-    var count = 0
+class MainViewModel(var count: Int) : ViewModel() {
 
 }
