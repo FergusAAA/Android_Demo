@@ -1,16 +1,16 @@
 package com.example.test.view
 
-import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
+import android.provider.Settings.Global.putInt
 import android.util.TypedValue
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test.R
@@ -36,8 +36,7 @@ class MainActivity : FragmentActivity() {
     /**
      * sp
      */
-    private lateinit var preferences: SharedPreferences
-    private lateinit var edit: SharedPreferences.Editor
+    private lateinit var sp: SharedPreferences
 
     private lateinit var myObserver: MyObserver
 
@@ -57,7 +56,6 @@ class MainActivity : FragmentActivity() {
         initView()
         initViewModel()
         initLifecycle()
-        refreshCount()
     }
 
     private fun initLifecycle() {
@@ -67,12 +65,11 @@ class MainActivity : FragmentActivity() {
 
     override fun onPause() {
         super.onPause()
-        edit.putInt(COUNT, mainViewModel.count).apply()
+        sp.edit().putInt(COUNT, mainViewModel.count.value ?: 0).apply()
     }
 
     private fun onClick(buttonName: String) {
-        mainViewModel.count++
-        refreshCount()
+        mainViewModel.plusOne()
         when (buttonName) {
             Constant.补间动画 -> startActivity(TweenActivity::class.java)
             Constant.内部文件存储 -> startActivity(InnerFirestoneActivity::class.java)
@@ -88,10 +85,13 @@ class MainActivity : FragmentActivity() {
      * 初始化ViewModel
      */
     private fun initViewModel() {
-        preferences = getPreferences(MODE_PRIVATE)
-        edit = preferences.edit()
-        val count = preferences.getInt("count", 0)
-        mainViewModel = ViewModelProvider(this,MainViewModelFactory(count))[MainViewModel::class.java]
+        sp = getPreferences(Context.MODE_PRIVATE)
+        val count = sp.getInt("count", 0)
+        mainViewModel =
+            ViewModelProvider(this, MainViewModelFactory(count))[MainViewModel::class.java]
+        mainViewModel.count.observe(this) {
+            refreshCount(it)
+        }
     }
 
     private fun initView() {
@@ -115,9 +115,9 @@ class MainActivity : FragmentActivity() {
             }
     }
 
-    private fun refreshCount() {
+    private fun refreshCount(count: Int) {
         clickCountTextView.text =
-            resources.getString(R.string.current_click_count, mainViewModel.count)
+            resources.getString(R.string.current_click_count, count)
     }
 
     private fun startActivity(targetCls: Class<*>) {
