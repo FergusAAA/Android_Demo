@@ -18,6 +18,7 @@ import com.example.test.adapter.ButtonAdapter
 import com.example.test.model.Constant
 import com.example.test.model.MainViewModel
 import com.example.test.model.MainViewModelFactory
+import com.example.test.model.MyObserver
 
 class MainActivity : FragmentActivity() {
     private lateinit var mBtnRecyclerView: RecyclerView
@@ -37,6 +38,9 @@ class MainActivity : FragmentActivity() {
      */
     private lateinit var preferences: SharedPreferences
     private lateinit var edit: SharedPreferences.Editor
+
+    private lateinit var myObserver: MyObserver
+
     private val mDataList = arrayListOf(
         Constant.补间动画,
         Constant.属性动画,
@@ -52,7 +56,13 @@ class MainActivity : FragmentActivity() {
         setContentView(R.layout.activity_main)
         initView()
         initViewModel()
+        initLifecycle()
         refreshCount()
+    }
+
+    private fun initLifecycle() {
+        myObserver = MyObserver(lifecycle)
+        lifecycle.addObserver(myObserver)
     }
 
     override fun onPause() {
