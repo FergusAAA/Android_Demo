@@ -19,4 +19,5 @@
     <string name="end">end</string>
 
     <string name="current_click_count">点击次数：%d</string>
+    <string name="test_room">Test Room</string>
 </resources>
