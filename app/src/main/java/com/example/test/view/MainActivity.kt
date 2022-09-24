@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.Settings.Global.putInt
 import android.util.TypedValue
 import android.widget.TextView
+import androidx.core.content.edit
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -65,7 +66,7 @@ class MainActivity : FragmentActivity() {
 
     override fun onPause() {
         super.onPause()
-        sp.edit().putInt(COUNT, mainViewModel.count.value ?: 0).apply()
+        sp.edit { putInt(COUNT, mainViewModel.count.value ?: 0) }
     }
 
     private fun onClick(buttonName: String) {
