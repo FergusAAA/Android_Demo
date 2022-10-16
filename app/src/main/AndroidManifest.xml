@@ -35,7 +35,8 @@
         <activity android:name=".view.ExternalStorageActivity" />
         <activity android:name=".view.InnerFirestoneActivity" />
         <activity android:name=".view.TweenActivity" />
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
