@@ -5,30 +5,21 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Rect
 import android.os.Bundle
-import android.provider.Settings.Global.putInt
 import android.util.TypedValue
-import android.widget.TextView
 import androidx.core.content.edit
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test.R
 import com.example.test.adapter.ButtonAdapter
+import com.example.test.databinding.ActivityMainBinding
 import com.example.test.model.Constant
 import com.example.test.model.MainViewModel
 import com.example.test.model.MainViewModelFactory
 import com.example.test.model.MyObserver
 
 class MainActivity : FragmentActivity() {
-    private lateinit var mBtnRecyclerView: RecyclerView
-
-    /**
-     * 点击按钮的总次数
-     */
-    private lateinit var clickCountTextView: TextView
-
     /**
      * 当前界面的ViewModel
      */
@@ -40,6 +31,8 @@ class MainActivity : FragmentActivity() {
     private lateinit var sp: SharedPreferences
 
     private lateinit var myObserver: MyObserver
+
+    private lateinit var binding: ActivityMainBinding
 
     private val mDataList = arrayListOf(
         Constant.补间动画,
@@ -53,7 +46,8 @@ class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initView()
         initViewModel()
         initLifecycle()
@@ -96,12 +90,10 @@ class MainActivity : FragmentActivity() {
     }
 
     private fun initView() {
-        mBtnRecyclerView = findViewById(R.id.btn_recyclerview)
-        clickCountTextView = findViewById(R.id.click_count)
-        mBtnRecyclerView.adapter = ButtonAdapter(mDataList, this)
-        mBtnRecyclerView.layoutManager = GridLayoutManager(this, 2)
+        binding.btnRecyclerview.adapter = ButtonAdapter(mDataList, this)
+        binding.btnRecyclerview.layoutManager = GridLayoutManager(this, 2)
 
-        mBtnRecyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
+        binding.btnRecyclerview.addItemDecoration(object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(outRect: Rect, itemPosition: Int, parent: RecyclerView) {
                 outRect.bottom = TypedValue.applyDimension(
                     TypedValue.COMPLEX_UNIT_DIP,
@@ -110,14 +102,14 @@ class MainActivity : FragmentActivity() {
                 ).toInt()
             }
         })
-        (mBtnRecyclerView.adapter as ButtonAdapter).onClickListener =
+        (binding.btnRecyclerview.adapter as ButtonAdapter).onClickListener =
             ButtonAdapter.OnClickListener {
                 onClick(mDataList[it])
             }
     }
 
     private fun refreshCount(count: Int) {
-        clickCountTextView.text =
+        binding.clickCount.text =
             resources.getString(R.string.current_click_count, count)
     }
 
