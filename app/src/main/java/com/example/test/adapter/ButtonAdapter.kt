@@ -23,7 +23,6 @@ import com.example.test.holder.ButtonViewHolder
  *
  * @version:   1.0
  * @createDate:   2022/3/5 17:45
- * @Copyright (C) 2022 YSTEN
  * @author:       NC0955
  */
 class ButtonAdapter(mDataList: List<String>? = null, private val mContext: Context) :

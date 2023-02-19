@@ -18,7 +18,6 @@ import com.example.test.model.bean.User
  *
  * @version:   1.0
  * @createDate:   2022/9/24 15:55
- * @Copyright (C) 2022 YSTEN
  * @author:       xuguangdong
  */
 @Database(version = 1, entities = [User::class])

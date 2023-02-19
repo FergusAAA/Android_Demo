@@ -1,4 +1,4 @@
-package com.example.test.view
+package com.example.test.view.activity
 
 import android.content.Context
 import android.content.Intent
@@ -18,6 +18,7 @@ import com.example.test.model.Constant
 import com.example.test.model.MainViewModel
 import com.example.test.model.MainViewModelFactory
 import com.example.test.model.MyObserver
+import com.example.test.view.ServiceTest
 
 class MainActivity : FragmentActivity() {
     /**
@@ -41,7 +42,8 @@ class MainActivity : FragmentActivity() {
         Constant.外部文件存储,
         Constant.数据库存储,
         Constant.CONTENT_PROVIDER,
-        Constant.SERVICE_TEST
+        Constant.SERVICE_TEST,
+        Constant.自定义View
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,6 +75,7 @@ class MainActivity : FragmentActivity() {
             Constant.CONTENT_PROVIDER -> startActivity(ContentResolverActivity::class.java)
             Constant.属性动画 -> startActivity(PropertyActivity::class.java)
             Constant.SERVICE_TEST -> startActivity(ServiceTest::class.java)
+            Constant.自定义View -> startActivity(CustomViewActivity::class.java)
         }
     }
 

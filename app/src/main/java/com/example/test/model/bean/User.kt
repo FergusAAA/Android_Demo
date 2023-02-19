@@ -16,7 +16,6 @@ import androidx.room.PrimaryKey
  *
  * @version:   1.0
  * @createDate:   2022/9/24 14:48
- * @Copyright (C) 2022 YSTEN
  * @author:       xuguangdong
  */
 @Entity

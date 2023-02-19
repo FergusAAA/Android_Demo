@@ -19,7 +19,6 @@ import com.example.test.model.bean.User
  *
  * @version:   1.0
  * @createDate:   2022/9/24 15:37
- * @Copyright (C) 2022 YSTEN
  * @author:       xuguangdong
  */
 @Dao

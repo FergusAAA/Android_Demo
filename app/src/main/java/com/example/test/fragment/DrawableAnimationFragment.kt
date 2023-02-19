@@ -24,7 +24,6 @@ import kotlinx.android.synthetic.main.activity_innerfilestorage.view.*
  *
  * @version:   1.0
  * @createDate:   2022/1/4 17:01
- * @Copyright (C) 2022 YSTEN
  * @author:       NC0955
  */
 class DrawableAnimationFragment : BaseFragment(), View.OnClickListener {

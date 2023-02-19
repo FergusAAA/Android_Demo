@@ -18,7 +18,6 @@ import kotlin.math.log
  *
  * @version:   1.0
  * @createDate:   2022/9/17 16:24
- * @Copyright (C) 2022 YSTEN
  * @author:       xuguangdong
  */
 class MyObserver(val lifecycle: Lifecycle) : LifecycleObserver {

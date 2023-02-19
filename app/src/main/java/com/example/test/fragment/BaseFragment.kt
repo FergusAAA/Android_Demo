@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment
  *
  * @version:   1.0
  * @createDate:   2022/1/5 15:35
- * @Copyright (C) 2022 YSTEN
  * @author:       NC0955
  */
 open class BaseFragment : Fragment() {

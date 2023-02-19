@@ -17,7 +17,6 @@ import com.example.test.R
  *
  * @version:   1.0
  * @createDate:   2022/5/14 13:28
- * @Copyright (C) 2022 YSTEN
  * @author:       xuguangdong
  */
 class ButtonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

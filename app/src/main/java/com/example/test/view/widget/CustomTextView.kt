@@ -1,4 +1,4 @@
-package com.example.test.view
+package com.example.test.view.widget
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -12,7 +12,7 @@ import java.io.InputStream
 
 /**
  * @title:       标题
- * @project:     Baymax
+ * @project:     Android_Demo
  * @package:     com.example.test.view
  * @class:       TestView
  * @description:
@@ -22,7 +22,6 @@ import java.io.InputStream
  *
  * @version:   1.0
  * @createDate:   2022/10/16 05:00
- * @Copyright (C) 2022 YSTEN
  * @author:       xuguangdong
  */
 class CustomTextView(context: Context, attrs: AttributeSet) : View(context, attrs) {

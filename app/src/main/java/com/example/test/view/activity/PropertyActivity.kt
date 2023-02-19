@@ -1,4 +1,4 @@
-package com.example.test.view
+package com.example.test.view.activity
 
 import android.animation.TypeEvaluator
 import android.animation.ValueAnimator
@@ -25,7 +25,6 @@ import com.example.test.adapter.ButtonAdapter.OnClickListener
  *
  * @version:   1.0
  * @createDate:   2022/3/3 11:39
- * @Copyright (C) 2022 YSTEN
  * @author:       NC0955
  */
 class PropertyActivity : Activity() {

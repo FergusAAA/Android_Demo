@@ -17,5 +17,6 @@ class Constant {
         const val STOP_FOREGROUND_SERVICE = "stop_前台Service"
         const val INTENT_SERVICE = "IntentService"
         const val STOP_INTENT_SERVICE = "stop_IntentService"
+        const val 自定义View = "自定义View"
     }
 }

@@ -1,4 +1,4 @@
-package com.example.test.view
+package com.example.test.view.activity
 
 import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +13,6 @@ import com.example.test.database.UserDao
 import com.example.test.model.bean.User
 import com.example.test.presenter.DatabaseStoragePresenter
 import com.example.test.view.imp.DatabaseStorageImp
-import kotlin.concurrent.thread
 
 class DatabaseStorageActivity : AppCompatActivity(), View.OnClickListener, DatabaseStorageImp {
     private lateinit var mCreateDbBtn: TextView

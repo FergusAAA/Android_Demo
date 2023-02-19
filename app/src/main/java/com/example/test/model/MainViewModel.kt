@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModel
  *
  * @version:   1.0
  * @createDate:   2022/8/13 20:47
- * @Copyright (C) 2022 YSTEN
  * @author:       xuguangdong
  */
 class MainViewModel(count: Int) : ViewModel() {

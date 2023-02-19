@@ -30,12 +30,12 @@
             android:exported="true" />
 
         <activity
-            android:name=".view.ContentResolverActivity"
+            android:name=".view.activity.ContentResolverActivity"
             android:exported="false" />
-        <activity android:name=".view.ExternalStorageActivity" />
-        <activity android:name=".view.InnerFirestoneActivity" />
-        <activity android:name=".view.TweenActivity" />
-        <activity android:name=".view.MainActivity"
+        <activity android:name=".view.activity.ExternalStorageActivity" />
+        <activity android:name=".view.activity.InnerFirestoneActivity" />
+        <activity android:name=".view.activity.TweenActivity" />
+        <activity android:name=".view.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,8 +43,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.DatabaseStorageActivity" />
-        <activity android:name=".view.PropertyActivity" />
+        <activity android:name=".view.activity.DatabaseStorageActivity" />
+        <activity android:name=".view.activity.PropertyActivity" />
+        <activity android:name=".view.activity.CustomViewActivity" />
     </application>
 
 </manifest>
