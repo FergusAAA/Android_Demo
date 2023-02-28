@@ -7,7 +7,7 @@ import android.util.TypedValue
  *
  * 将 dp 转换为 px
  */
-val Int.px: Int
+val Int.dp: Int
     get() {
         return TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,

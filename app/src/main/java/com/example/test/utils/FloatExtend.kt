@@ -8,7 +8,7 @@ import android.util.TypedValue
  *
  * 将 dp 转换为 px
  */
-val Float.px: Float
+val Float.dp: Float
     get() {
         return TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,

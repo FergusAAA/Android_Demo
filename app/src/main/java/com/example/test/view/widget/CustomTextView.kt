@@ -7,7 +7,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.example.test.utils.px
+import com.example.test.utils.dp
 import java.io.InputStream
 
 /**
@@ -31,15 +31,15 @@ class CustomTextView(context: Context, attrs: AttributeSet) : View(context, attr
     val assetManager = context.assets
 
     val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        this.textSize = 16.px.toFloat()
+        this.textSize = 16.dp.toFloat()
         this.textAlign = Paint.Align.LEFT
     }
     val imagePaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     val metrics = Paint.FontMetrics()
 
-    private val IMAGE_WIDTH = 100.px
-    private val IMAGE_PADDING = 50.px
+    private val IMAGE_WIDTH = 100.dp
+    private val IMAGE_PADDING = 50.dp
     private var IMAGE_HIGHT = 0
 
     override fun onDraw(canvas: Canvas) {

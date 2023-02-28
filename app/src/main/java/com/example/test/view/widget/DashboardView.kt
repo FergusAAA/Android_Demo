@@ -8,7 +8,7 @@ import android.graphics.PathDashPathEffect
 import android.graphics.PathMeasure
 import android.util.AttributeSet
 import android.view.View
-import com.example.test.utils.px
+import com.example.test.utils.dp
 
 /**
  * @title:       标题
@@ -32,8 +32,8 @@ const val OPEN_ANGLE = 120
 /**
  * 竖线宽度和高度
  */
-val DASH_WIDTH = 2f.px
-val DASH_LENGTH = 20f.px
+val DASH_WIDTH = 2f.dp
+val DASH_LENGTH = 20f.dp
 
 class DashboardView(context: Context?, attr: AttributeSet?) : View(context, attr) {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -54,7 +54,7 @@ class DashboardView(context: Context?, attr: AttributeSet?) : View(context, attr
     private val line = Path()
 
     init {
-        paint.strokeWidth = 3f.px
+        paint.strokeWidth = 3f.dp
         paint.style = Paint.Style.STROKE
         dash.addRect(0f, 0f, DASH_WIDTH, DASH_LENGTH, Path.Direction.CCW)
     }
@@ -72,10 +72,10 @@ class DashboardView(context: Context?, attr: AttributeSet?) : View(context, attr
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         line.reset()
         line.addArc(
-            width / 2f - 150.px,
-            height / 2f - 150.px,
-            width / 2f + 150.px,
-            height / 2f + 150.px,
+            width / 2f - 150.dp,
+            height / 2f - 150.dp,
+            width / 2f + 150.dp,
+            height / 2f + 150.dp,
             90f + OPEN_ANGLE / 2,
             360f - OPEN_ANGLE,
         )

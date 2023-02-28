@@ -15,8 +15,8 @@ import com.example.test.R
 import com.example.test.adapter.ButtonAdapter
 import com.example.test.databinding.ActivityMainBinding
 import com.example.test.model.Constant
-import com.example.test.model.MainViewModel
-import com.example.test.model.MainViewModelFactory
+import com.example.test.model.viewmodel.MainViewModel
+import com.example.test.model.viewmodel.MainViewModelFactory
 import com.example.test.model.MyObserver
 import com.example.test.view.ServiceTest
 
