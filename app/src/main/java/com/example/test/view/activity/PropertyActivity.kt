@@ -52,7 +52,7 @@ class PropertyActivity : Activity() {
     private fun initData() {
         Log.w(TAG, "initData")
         mDataLists.add(HEARTBEAT_ANIMATION)
-        mButtonAdapter.mDataList = mDataLists
+        mButtonAdapter.submit(mDataLists)
     }
 
     private fun initView() {
